@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block placeholderbody %}
+
+  <h1>Registered Users</h1>
+  <ul>
+    <!-- <td></td> -->
+    <!-- <th></th> -->
+    <!-- More Jinja -->
+    {% for registrant in registrants %}
+      <li>
+        <!-- If using a dictionary i.e. sqlite3.Row -->
+        <!-- {{ registrant['user_name'] }} is registered for {{ registrant['user_sport'] }} <br> -->
+        <b>{{ registrant.user_name }}</b> is registered for <b>{{ registrant.user_sport }}</b> <br>
+
+        <!-- If using a list i.e. default -->
+        <!-- {{ registrant[0] }} is registered for {{ registrant[1] }} -->
+
+        <!-- Deregister form -->
+        <form action="/deregister" method="post">
+          <input type="hidden" name="deregister_user_name" value="{{ registrant.user_name }}">
+          <input type="hidden" name="deregister_user_sport" value="{{ registrant.user_sport }}">
+          <input type="submit" value="Deregister">
+      </li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block placeholderbody %}
+
+  <!-- register user -->
+  <!-- <h1>Register User</h1>
+  <form action="/registeruser" method="post">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" placeholder="Username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" placeholder="Password" required>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="Email" required>
+    <input type="submit" value="Register">
+  </form> -->
+
+  {% if session["name"] %}
+    <h1>Welcome, {{ session["name"] }}</h1>
+    <a href="/logout">Logout</a>
+  {% else %}
+    <!-- It should never come to this, since index redirects to login if session["name"] is not set -->
+    <h1>Login</h1>
+    <form action="/login" method="post">
+      <input autocomplete="off" autofocus name="loginname" placeholder="Name" required type="text" />
+      <!-- <input name="password" placeholder="Password" required type="password" /> -->
+      <button type="submit">Login</button>
+    </form>
+  {% endif %}
+
+  <!-- register for sport form -->
+  <h1>Register for a Sport</h1>
+  <form action="/registersport" method="post">
+    <!-- <input autocomplete="off" autofocus name="username" placeholder="Name" required type="text" /> -->
+    Register {{ session["name"] }} for 
+    
+    <select name="sport">
+      <option disabled selected value> -- select a sport -- </option>
+      <!-- Jinja -->
+      {% for sportoption in sports %}
+        <option value="{{ sportoption }}">{{ sportoption }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Register</button>
+  </form>
+
+  <h1 style="margin-top: 50px;">Registered Users</h1>
+  <a href="showregistrants">Registrants</a> 
+
+{% endblock %}

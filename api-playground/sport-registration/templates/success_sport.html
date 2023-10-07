@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block placeholderbody %}
+
+  <h1>Success!</h1>
+  <p>Thank you {{ username }} for registering for {{ sport }}!</p>
+
+  <h1 style="margin-top: 50px;">Registered Users</h1>
+  <a href="showregistrants">Registrants</a> 
+  <a href="{{ url_for('showregistrants') }}">Registrants</a>
+
+{% endblock %}

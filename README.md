@@ -12,3 +12,5 @@ Backprop to transformers from numpy alone
 ### Name classifier
 A LSTM and simple Naive Bayes implementation
 
+### APIs
+Explore building APIs and Webapps
